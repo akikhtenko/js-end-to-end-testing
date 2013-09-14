@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.ubs.opsit</groupId>
+  <artifactId>js-end-to-end-testing</artifactId>
+  <version>1.0</version>
+  <name>JS end-to-end testing!</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <verbose>true</verbose>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.ubs.opsit</groupId>
+        <artifactId>casperjs-maven-plugin</artifactId>
+        <version>1.0-RC1</version>
+        <executions>
+          <execution>
+            <id>test</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <casperjs.executable>casperjs.bat</casperjs.executable>
+          <tests.directory>${basedir}/src/test/javascript/unit</tests.directory>
+          <include.javascript>false</include.javascript>
+          <include.coffeescript>false</include.coffeescript>
+          <xunit>${project.build.directory}/surefire/TEST-%s.xml</xunit>
+          <features.runner>${basedir}/src/test/lib/bdd.js</features.runner>
+          <libs.directory>${basedir}/src/test/javascript/libs</libs.directory>
+          <features.directory>${basedir}/src/test/javascript/features</features.directory>
+        </configuration>
+      </plugin>
+    </plugins>
+
+  </build>
+
+</project>
